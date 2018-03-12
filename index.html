@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>TITLE</title>
+		<title>Be Reactive and Micro with a MicroProfile Stack</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -31,469 +31,116 @@
                             <section data-markdown class="title">
 <span class="template"/>
                                 <textarea data-template>
-# TITLE
+# Be Reactive and Micro with a MicroProfile Stack
 
 <br/>
 
-<img src="img/devoxxma.png" style="float: left; width: 400px; border: none; background: white">
+<img src="img/event-logo.png" style="float: left; width: 250px; border: none; background: white">
 <p>Ondrej Mihályi</p>
 <p style="font-size: 70%">@omihalyi</p>
 
 <aside class="notes" data-template>
-#    Q: How many think about a big load upfront?
-    
-- some do, good, I almost never did
-- it's not in requirements
-- business don't specify, maybe because they don't know
-- even if specd, the load increases later
-- what about designing apps to adapt them to any load?
 
 </aside>
                                 </textarea>
                             </section>
                             
-                            <section>
-
-                                <section data-markdown class="regular">
-                                    <textarea data-template>
-# Scalable applications
-
-<ul>
-    What it means? Another buzzword?
-</ul>
-
-<aside class="notes">
-</aside>
-                                    </textarea>
-                                </section>
-
-                                <section data-markdown class="regular">
-                                    <textarea data-template>
-# Highly Scalable applications !?
-
-<ul>
-    <span><span class="fragment" data-fragment-index="1">Just great.</span> <span class="fragment" data-fragment-index="2">Buzzword Bingo time!</span></span>
- <img class="bingo fragment" data-fragment-index="2" src="img/buzzword-bingo.png" height="300" width="400"/>
-</ul>
-
-<aside class="notes">
-</aside>
-                                    </textarea>
-                                </section>
-
-                                <section data-markdown class="regular ">
-                                    <textarea data-template>
-# Seriously, what are we after?
-
-- The main Goal:
-<ul>
-    <lu>add more resources to do the job faster.</lu>
-</ul>
-
-<aside class="notes">
-
-More CPU, more RAM, etc.
-
-</aside>
-                                    </textarea>
-                                </section>
-
-                            </section>
-
-                            <section>
-                                <section data-markdown class="regular smaller-font">
-                                    <textarea data-template>
-# What is scalability
-
-- Ability to improve with more resources
-- Not straightforward
-<ul>
-- More working hours &#8800;<!-- not equal--> more done
-- More people on the job &#8800;<!-- not equal--> faster
-</ul>
-
-<aside class="notes">
-    What scalable application is.
-    
-    More people to do the job doesn't have to do it faster.
-    
-    We wish so - if only we could organize well, e.g. parallel assembly lines scale.
-    
-</aside>
-                                    </textarea>
-                                </section>
-
-                                <section data-markdown class="regular smaller-font">
-                                    <textarea data-template>
-# Types of scaling
-
-- <strong>Vertical</strong>
-<ul>
-    <lu>easy, brute force, often works
-    </lu>
-    <lu>inefficient, limited by physics</lu>
-</ul>
-- <strong>Horizontal</strong>
-<ul>
-- enables granular scaling
-- more complexity
-</ul>
-
-<aside class="notes">
-    Vertical scaling always works, but inefficient - everything is scaled, fast made even faster, slow is not faster enough.
-    Can have bottlenecks - not every resource can be scaled vertically at the same pace.
-    
-    We're after horizontal scaling to distribute the load better and efficiently. Slow gets faster, fast stays fast and doesn't compete for more resources wth slower. 
-</aside>
-                                    </textarea>
-                                </section>
-
-                            </section>
-
-                            <section data-markdown class="regular double-line-header">
+                            <section data-markdown class="regular floating">
                                 <textarea data-template>
+# What do we want?
 
-# Challenges of horizontal scaling
+![](img/what-do-we-want.jpg)
 
-- distributed programming
-- increased communication
-- shared state
-
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-                        
-                            <section data-markdown class="regular">
-                                <textarea data-template>
-
-# Avoiding bottlenecks
-
-- <strong>[Amdahl's law](https://en.wikipedia.org/wiki/Amdahl%27s_law)</strong>:
-<ul>
-    Speedup <u>limited</u> by the parts that <u>don't benefit</u> from added resources
-</ul>
-- bottlenecks: sequential tasks, synchronization, communication
-
-
-<aside class="notes">
-     
-    Amdahl's law: https://en.wikipedia.org/wiki/Amdahl%27s_law
-    
-     - similar to the problem of adding people to a job
-     - more resources don't always mean a significant speed up
-     - application needs to be able to utilize those resources, avoiding bottlenecks
-     - in the same way as adding new intercity highways don't help if there's no highway though/around city center's
-     
+![](img/reactive-manifesto.png) <!-- .element: style="width: 600px" class="fragment" data-fragment-index="1" -->
+<aside class="notes" data-template>
 </aside>
                                 </textarea>
                             </section>
 
                             <section>
-                                <section data-markdown class="small-font regular">
+
+                                <section data-markdown class="regular floating">
                                     <textarea data-template>
+# Why do we want it?
 
-# In-memory datagrids
+![](img/why-do-we-want.jpg)
 
-- distributed shared state (memory)
-- distrib. communication (locks, messaging, ...)
-- simple distrib. structures (map, set, queue, ...)
-- sophisticated algorithms behind the scenes
-<ul>
-    <li>data replication and even distribution
-    </li>
-    <li>auto-discovery of nodes
-    </li>
-</ul>
+- there should be a <!-- .element: class="fragment" data-fragment-index="1" -->
+___problem___ to solve 
 
-<aside class="notes">
-    Distributed memory and datagrids can help with horizontal scaling
-    
-     - distributed shared state
-       - no need to synchronize through a central point (DB)
-       - distributed persistence out of the box
-       - data replication and recovery out of the box
-     - simplify communication
-       - possible to send data and instructions easily to any node
-       - often no service discovery is needed because nodes are already connected and communicate
-     - simplified programming model
-       - provides abstraction over moving parts (node is up/down, data fetching from a remote node as from local)
-       - simple and well-known interfaces - map, queue, executors
-</aside>
-                                    </textarea>
-                                </section>
-
-                                <section data-markdown class="regular small-font">
-                                    <textarea data-template>
-
-# Examples of data-grids
-
-- Hazelcast
-- JBoss Infinispan
-- Oracle Coherence
-- Terracotta
-
-<aside class="notes">
-     
-</aside>
-                                    </textarea>
-                                </section>
-                            </section>
-                            
-                        <section>
-                            <section data-markdown class="regular smaller-font">
-                                <textarea data-template>
-
-# Payara Server
-
-- derived from GlassFish Java EE Server
-- embedded Hazelcast
-<ul>
-- HTTP session replication
-- JCache CDI integration
-- message bus over CDI events
-</ul>
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-
-                            <section data-markdown class="regular smaller-font">
-                                <textarea data-template>
-
-# Payara Micro
-
-- shares codebase with Payara Server
-- can cluster with Payara Server
-- executable JAR or embedded
-- web apps in a separate file or uber JAR
-- Hazelcast started by default
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-                        </section>
-                        <section>
-                            <section data-markdown class="regular smaller-font">
-                                <textarea data-template>
-
-# Scale up!
-
-<p>
-    Once an app is designed for flexible clustering, it becomes elastic - easily adaptable to increasing load.
-</p>
-<img class="swarm" src="img/swarm.jpg" width="400px">
-
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-
-                            <section data-markdown class="only-title">
-                                <textarea data-template>
-
-# Demo time
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-                        </section>
-
-                            <section data-markdown class="regular smaller-font">
-                                <textarea data-template>
-
-# #1 Multiplication
-
-- Additional instances
-<ul>
-- more CPUs and other resources
-</ul>
-- Simple load balancer is enough
-<ul>
-- data is shared automatically
-</ul>
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-
-                            <section>
-                                <section data-markdown class="regular smaller-font">
-                                    <textarea data-template>
-
-# #2 Scaling memory
-
-- Data access is often a bottleneck
-<ul>
- &#8594;<!-- -> --> Keep data in memory
-</ul>
-- Additional instances with no apps
-<ul>
-- Dumb nodes carrying data
-- Increase available memory
-- Increase resilience to outages
-</ul>
-
-<aside class="notes">
+<aside class="notes" data-template>
 </aside>
                                     </textarea>
                                 </section>
 
                                 <section data-markdown class="regular">
                                     <textarea data-template>
+# Better user experience
 
-# #2 Scaling memory
+- updates when ready, reduced waiting
+- errors raised ASAP
+- users can react faster
+- avoids unnecessary user retries
 
-<img src="img/diagram-additional-nodes.jpg">
-
-<aside class="notes">
+<aside class="notes" data-template>
 </aside>
                                     </textarea>
                                 </section>
-                            </section>
-                            
-                            <section>
-                                <section data-markdown class="regular smaller-font">
+                                
+                                <section data-markdown class="regular">
                                     <textarea data-template>
+# Handle high loads
 
-# #3 Separating data from logic
+- utilize resources at maximum (CPU)
+- threads aren't wasted by blocking
+- avoid blocking of new requests
 
-- more data &#8594;<!-- -> --> more heap and time in GC
-- run critical apps on lite nodes
-<ul>
-- slower data access but less GC cycles
-- tweak GC & heap for throughput
-</ul>
-- data and app nodes in pair on the same machine
-
-<aside class="notes">
+<aside class="notes" data-template>
 </aside>
                                     </textarea>
                                 </section>
 
                                 <section data-markdown class="regular">
                                     <textarea data-template>
+# Handle massive loads
 
-# #3 Separating data from logic
+- scale to more nodes
+- messaging to distribute the load
 
-<img src="img/diagram-lite-nodes.jpg">
-
-<aside class="notes">
-</aside>
-                                    </textarea>
-                                </section>
-                            </section>
-                            
-                            <section data-markdown class="only-title">
-                                <textarea data-template>
-
-# Demo time
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-
-                            <section>
-                                <section data-markdown class="regular smaller-font">
-                                    <textarea data-template>
-
-# #4 Scale app parts separately
-
-- some parts of an app are bottlenecks
-- split those into separate services
-<ul>
-- can be scaled higher
-- resources assigned more granularly
-</ul>
-- small and lean services with Payara Micro or even a standalone Hazelcast
-
-<aside class="notes">
+<aside class="notes" data-template>
 </aside>
                                     </textarea>
                                 </section>
 
                                 <section data-markdown class="regular">
                                     <textarea data-template>
+# Don't forget about failures
 
-# #4 Scale app parts separately
+- fail fast and avoid waste
+- make sure failures are handled
+- failures happen a lot more in distributed systems
 
-<img src="img/diagram-microservice.jpg">
-
-<aside class="notes">
+<aside class="notes" data-template>
 </aside>
                                     </textarea>
                                 </section>
                             </section>
-                            
-                            <section data-markdown class="regular">
-                                <textarea data-template>
 
-# Hazelcast memory utilization
+                            <section>
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# ![](img/microprofile.png)  <!-- .element: style="width: 100px; float: left;" --> What is MicroProfile?
 
-- Replicated up to X nodes
-- Data evenly distributed
-- Lite nodes without data
-- Off-heap data (enterprise)
 
-<aside class="notes">
+- open-source specification for Java microservices ([microprofile.io](microprofile.io))
+- ![](img/mp-specs.png) <!-- .element: style="width: 500px;" -->
+
+<aside class="notes" data-template>
 </aside>
-                                </textarea>
-                            </section>
-
-                            <section data-markdown class="regular smaller-font">
-                                <textarea data-template>
-
-# Other Hazelcast features
-
-- Auto discovery and recovery
-<ul>
-- multicast and TCP joiners
-- data redistribution when nodes join/leave
-</ul>
-- Distributed cache (JCache API)
-- Distributed queries and ExecutorService
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-
-                            <section data-markdown class="only-title">
-                                <textarea data-template>
-
-# Anything to ask?
-
-<div class="fragment">Thank you</div>
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-                            
-                            <section data-markdown class="regular small-font">
-                                <textarea data-template>
-
-# Resources
-
-- source code: [OndrejM-demonstrations/scaling-with-datagrids](https://github.com/OndrejM-demonstrations/scaling-with-datagrids)
-- [article about flexible clustering](http://blog.payara.fish/flexible-clustering-with-payara-server)
-- Hazelcast: [hazelcast.com](https://hazelcast.com/), [hazelcast.org](https://hazelcast.org/)
-- Payara: [payara.fish](http://www.payara.fish), [payara.org](http://www.payara.org)
-
-
-
-<aside class="notes">
-</aside>
-                                </textarea>
-                            </section>
-                            
+                                    </textarea>
+                                </section>
+                                
+                            </section>                            
                             
                             
                         </div>

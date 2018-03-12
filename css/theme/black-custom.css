@@ -95,6 +95,19 @@
 .reveal .slides section.regular p {
     text-align: justify ;
 }
+.reveal .slides section.floating > * {
+    float: left;
+}
+.reveal .slides section.floating > ul {
+    height: auto;
+    width: 60%;
+}
+.reveal .slides section.regular h1 {
+    float: none;
+}
+.reveal .slides section.floating > .footer {
+    clear: both;
+}
 .reveal .slides section.only-title {
     display: flex !important;
     flex-flow: column;
