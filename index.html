@@ -140,8 +140,156 @@ ___problem___ to solve
                                     </textarea>
                                 </section>
                                 
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Reactive support in MicroProfile
+
+- Asynchronous REST (JAX-RS)
+- CDI events
+- easy Fault Tolerance
+- Monitoring via Metrics
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular smaller-font">
+                                    <textarea data-template>
+# We'll add what's missing
+
+- RxJava
+<ul>
+- handle callbacks and data streams
+- asynchronous Fault Tolerance
+</ul>
+
+- React.js
+<ul>
+- easy updates on events
+</ul>
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
                             </section>                            
                             
+                            <section>                            
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Our demo application
+
+![](img/DemoAppArchitecture.jpg)
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="only-title">
+                                    <textarea data-template>
+# DEMO
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                            </section>                            
+
+                            <section>
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# We'll add more
+
+- Java EE 8
+<ul>
+- reactive REST client (JAX-RS)
+- Server-Sent Events
+</ul>
+- Kafka JCA connector
+- Hazelcast
+<ul>
+- distributed cache and other structures
+- NoSQL distributed datastore 
+</ul>
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="only-title">
+                                    <textarea data-template>
+# DEMO
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                            </section>                            
+                            
+                            <section>
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# Payara Server
+
+- MicroProfile, Java EE, Hazelcast, Cloud JCA Connectors, CDI event bus
+- dynamic clustering (suitable for cloud)
+- fast development
+- admin console
+- monitoring
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# Payara Micro
+
+- APIs as in Server (except SOAP, remote EJB)
+- most of features of the Server
+- executable JAR, <70 MB
+- easier to install and run apps
+<ul>
+- command line, maven plugin
+</ul>
+- build uber JAR
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                            </section>                            
+                            
+                            <section data-markdown class="regular">
+                                <textarea data-template>
+# What to avoid
+
+- relying on request scope
+- relying on thread local
+- using synchronous CDI interceptors
+- Don't jump to reactive before needed <!-- .element: class="fragment" data-fragment-index="1" -->
+
+<aside class="notes" data-template>
+</aside>
+                                </textarea>
+                            </section>
+                            
+                            <section data-markdown class="regular">
+                                <textarea data-template>
+# Questions?
+
+- Thank you!
+
+<aside class="notes" data-template>
+</aside>
+                                </textarea>
+                            </section>
                             
                         </div>
 		</div>
