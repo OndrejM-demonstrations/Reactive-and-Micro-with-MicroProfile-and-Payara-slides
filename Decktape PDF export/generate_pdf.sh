@@ -2,5 +2,6 @@
 #######################################################################################################
 
 URL=http://localhost:8383/slides/index.html#/
+OUTPUT_FILE="Ondrej Mihalyi - Be Reactive and Micro with a MicroProfile Stack.pdf"
 
-decktape-1.0.0/phantomjs decktape-1.0.0/decktape.js automatic $URL slides.pdf
+decktape-1.0.0/phantomjs decktape-1.0.0/decktape.js automatic $URL slides/"$OUTPUT_FILE"

@@ -64,6 +64,10 @@
     font-size: 80%;
 }
 
+.reveal .slides section.only-title.small-font {
+    font-size: 50%;
+}
+
 .reveal .slides section.regular.small-font > ul > li {
     margin: 0.1em;
 }
