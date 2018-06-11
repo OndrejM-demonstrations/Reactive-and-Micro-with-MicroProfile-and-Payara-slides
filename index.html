@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Be Reactive and Micro with a MicroProfile Stack</title>
+
+		<link rel="stylesheet" href="revealjs/css/reveal.css">
+		<link rel="stylesheet" href="revealjs/css/theme/black.css">
+                <link rel="stylesheet" href="revealjs/css/theme/black-custom.css">
+                <script src="revealjs/js/theme/black-custom.js"/>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports 
+                   Print with Decktape
+                -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                            <section data-markdown class="title">
+<span class="template"/>
+                                <textarea data-template>
+# Be Reactive and Micro with a MicroProfile Stack
+
+<br/>
+
+<div style="float: left; top: -2em; position: relative">
+<img src="img/event-logo.png" style="display: block; width: 250px; border: none; background: white">
+<img src="img/payara.png" style="display: block; width: 150px; border: none;">
+</div>
+<p>Ondro Mihályi</p>
+<p style="font-size: 70%">@omihalyi</p>
+
+<aside class="notes" data-template>
+
+</aside>
+                                </textarea>
+                            </section>
+                            
+                            <section data-markdown class="regular floating">
+                                <textarea data-template>
+# What do we want?
+
+![](img/what-do-we-want.jpg)
+
+![](img/reactive-manifesto.png) <!-- .element: style="width: 600px" class="fragment" data-fragment-index="1" -->
+<aside class="notes" data-template>
+</aside>
+                                </textarea>
+                            </section>
+
+                            <section>
+
+                                <section data-markdown class="regular floating">
+                                    <textarea data-template>
+# Why do we want it?
+
+![](img/why-do-we-want.jpg)
+
+- there should be a <!-- .element: class="fragment" data-fragment-index="1" -->
+___problem___ to solve 
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Better user experience
+
+- updates when ready, reduced waiting
+- errors raised ASAP
+- users can react faster
+- avoids unnecessary user retries
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Handle high loads
+
+- utilize resources at maximum (CPU)
+- threads aren't wasted by blocking
+- avoid blocking of new requests
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Handle massive loads
+
+- scale to more nodes
+- messaging to distribute the load
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Don't forget about failures
+
+- fail fast and avoid waste
+- make sure failures are handled
+- failures happen a lot more in distributed systems
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                            </section>
+
+                            <section>
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# ![](img/microprofile.png)  <!-- .element: style="width: 100px; float: left;" --> What is MicroProfile?
+
+
+- open-source specification for Java microservices ([microprofile.io](microprofile.io))
+- ![](img/mp-specs.png) <!-- .element: style="width: 500px;" -->
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Reactive support in MicroProfile
+
+- Asynchronous REST (JAX-RS)
+- CDI events
+- Monitoring via Metrics
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# More to come in MicroProfile
+
+- Reactive REST & SSE (Java EE 8)
+- Async CDI events (Java EE 8)
+- Async Fault Tolerance interceptors
+- Reactive streams <!-- .element: class="fragment" data-fragment-index="1" -->
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="regular smaller-font">
+                                    <textarea data-template>
+# We'll add what's missing
+
+- RxJava (Reactive Streams)
+<ul>
+- handle callbacks and data streams
+- asynchronous Fault Tolerance
+</ul>
+
+- React.js
+<ul>
+- easy updates on events
+</ul>
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                            </section>                            
+                            
+                            <section>                            
+                                <section data-markdown class="regular">
+                                    <textarea data-template>
+# Our demo application
+
+![](img/DemoAppArchitecture.jpg)
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                                <section data-markdown class="only-title small-font">
+                                    <textarea data-template>
+# DEMO
+
+Source: https://github.com/OndrejM-demonstrations/Reactive-and-Micro-with-MicroProfile-and-Payara
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+
+                            </section>                            
+
+                            <section>
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# We'll add more
+
+- Java EE 8
+<ul>
+- reactive REST client (JAX-RS)
+- Server-Sent Events
+</ul>
+- Kafka JCA connector
+- Hazelcast
+<ul>
+- distributed cache and other structures
+- NoSQL distributed datastore 
+</ul>
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="only-title">
+                                    <textarea data-template>
+# DEMO
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                            </section>                            
+                            
+                            <section>
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# Payara Server
+
+- MicroProfile, Java EE, Hazelcast, Cloud JCA Connectors, CDI event bus
+- dynamic clustering (suitable for cloud)
+- fast development
+- admin console
+- monitoring
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                                
+                                <section data-markdown class="regular small-font">
+                                    <textarea data-template>
+# Payara Micro
+
+- APIs as in Server (except SOAP, remote EJB)
+- most of features of the Server
+- executable JAR, <70 MB
+- easier to install and run apps
+<ul>
+- command line, maven plugin
+</ul>
+- build uber JAR
+
+<aside class="notes" data-template>
+</aside>
+                                    </textarea>
+                                </section>
+                            </section>                            
+                            
+                            <section data-markdown class="regular">
+                                <textarea data-template>
+# What to avoid
+
+- relying on request scope
+- relying on thread local
+- using synchronous CDI interceptors
+
+<aside class="notes" data-template>
+</aside>
+                                </textarea>
+                            </section>
+                            
+                            <section data-markdown class="regular">
+                                <textarea data-template>
+# Questions?
+
+- Thank you!
+
+<aside class="notes" data-template>
+</aside>
+                                </textarea>
+                            </section>
+                            
+                        </div>
+		</div>
+            
+            <div class="templates" style="display: none">
+                <span class="regular-footer only-title-footer footer"><img class="payara" src="img/payara.png"> @OMihalyi</span>
+            </div>
+
+		<script src="revealjs/lib/js/head.min.js"></script>
+		<script src="revealjs/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+                        theme.initialize();
+                        var revealDirectory = 'revealjs/';
+			Reveal.initialize({
+                                history: true,
+                                center: true,
+                                mouseWheel: true,
+				dependencies: [
+					{ src: revealDirectory + 'plugin/markdown/marked.js' },
+					{ src: revealDirectory + 'plugin/markdown/markdown.js' },
+					{ src: revealDirectory + 'plugin/notes/notes.js', async: true },
+					{ src: revealDirectory + 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

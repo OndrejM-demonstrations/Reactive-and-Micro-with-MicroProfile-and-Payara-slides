@@ -1,0 +1,27 @@
+{
+  "name": "Reactive MicroProfle Slides",
+  "version": "3.5.0",
+  "main": [
+    "revealjs/js/reveal.js",
+    "revealjs/css/reveal.css"
+  ],
+  "homepage": "http://lab.hakim.se/reveal-js/",
+  "license": "MIT",
+  "description": "The HTML Presentation Framework",
+  "authors": [
+    "Hakim El Hattab <hakim.elhattab@gmail.com>"
+  ],
+  "dependencies": {
+    "headjs": "~1.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hakimel/reveal.js.git"
+  },
+  "ignore": [
+    "**/.*",
+    "revealjs/node_modules",
+    "revealjs/bower_components",
+    "revealjs/test"
+  ]
+}
