@@ -1,0 +1,3 @@
+[submodule "revealjs"]
+	path = revealjs
+	url = https://github.com/OndrejM-demonstrations/Reactive-and-Micro-with-MicroProfile-and-Payara-slides.git
